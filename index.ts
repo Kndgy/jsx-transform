@@ -11,7 +11,7 @@ interface NodeJson {
     };
   }
   
-  export function CreateJSON(obj: NodeJson | Array<NodeJson>): NodeJson {
+export function CreateJSON(obj: NodeJson | Array<NodeJson>): NodeJson {
     let newNode: NodeJson = {
       type: '',
       props: {
@@ -38,7 +38,7 @@ interface NodeJson {
             newNode.props.className = obj.props.className;
           }
           if (obj.props.hasOwnProperty("style")) {
-              newNode.props.style = obj.props.style;
+            newNode.props.style = obj.props.style;
           }
           if (obj.props.hasOwnProperty("children")) {
             if (Array.isArray(obj.props.children)) {
@@ -82,36 +82,37 @@ interface NodeJson {
     }
     recurse(obj, newNode);
     return newNode;
-  }
+}
   
-  export function CreateJsx(el:any){
-    type JsonType = {
-        type?: string;
-        props: {
-          [key: string]: any;
-          children?: JsonType[] | string[];
-        };
-      };
-      
-    function createReactElementFromJson(json: JsonType): React.ReactNode {
-        const { type, props } = json;
-        
-        const children = props.children || [];
-        
-        const childElements = children.map(child => {
-            if (typeof child === 'string') {
-            return child;
-            } else {
-            return createReactElementFromJson(child);
-            }
-        });
-        
-        return React.createElement(
-            type!,
-            props,
-            ...childElements
-        );
-    }
-      
-    return createReactElementFromJson(el)
+export function CreateJsx(el:any){
+  type JsonType = {
+    type?: string;
+    key: any;
+    ref: any;
+    props: {
+      children?: JsonType[] | string[];
+    };
+  };
+
+  function createReactElementFromJson(json: JsonType): React.ReactNode {
+    const { type, props, key, ref,  } = json;
+
+    const { children, ...rest } = props;
+
+    const childElements = (children || []).map(child => {
+      if (typeof child === "string") {
+        return child;
+      } else {
+        return createReactElementFromJson(child);
+      }
+    });
+
+    return React.createElement(
+      type!,
+      { key, ref, ...rest },
+      ...childElements
+    );
+  }
+
+  return createReactElementFromJson(el);
 }

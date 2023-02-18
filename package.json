@@ -1,0 +1,30 @@
+{
+  "name": "jsx-transform-json",
+  "version": "1.0.0",
+  "description": "transform jsx to json and the other way around",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kndgy/jsx-transform.git"
+  },
+  "keywords": [
+    "jsx",
+    "tsx",
+    "json"
+  ],
+  "author": "kaine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kndgy/jsx-transform/issues"
+  },
+  "homepage": "https://github.com/Kndgy/jsx-transform#readme",
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}

@@ -11,7 +11,7 @@ interface NodeJson {
     };
   }
   
-  export function restructureJSON(obj: NodeJson | Array<NodeJson>): NodeJson {
+  export function CreateJSON(obj: NodeJson | Array<NodeJson>): NodeJson {
     let newNode: NodeJson = {
       type: '',
       props: {

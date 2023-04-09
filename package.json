@@ -1,6 +1,6 @@
 {
   "name": "jsx-transform-json",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "transform jsx to json and the other way around",
   "main": "index.ts",
   "scripts": {
